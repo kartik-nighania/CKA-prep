@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  labels:
+    app: frontend-deployment-test
+spec:
+  selector:
+    matchLabels:
+      env: production
+  replicas: 3
+  template:
+    metadata:
+      name: nginx_pod
+      labels:
+        env: production
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+        - name: redis
+          image: redis
+        - name: mongodb
+          image: mongo
